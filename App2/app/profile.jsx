@@ -1,17 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import {Slot} from 'expo-router'
 
-const RootLayout = () => {
+const Profile = () => {
   return (
     <View>
-      <Text>Header</Text>
-      <Slot />
-      <Text>Footer</Text>
+      <Text>Here is the Profile Page</Text>
     </View>
   )
 }
 
-export default RootLayout
+export default Profile
 
 const styles = StyleSheet.create({})
