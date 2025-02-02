@@ -5,7 +5,7 @@ import {Slot} from 'expo-router'
 
 export default function App() {
   return (
-    <View>
+    <View className="flex flex-row">
       <Text>Header</Text>
       <Slot />
       <Text>Footer</Text>
