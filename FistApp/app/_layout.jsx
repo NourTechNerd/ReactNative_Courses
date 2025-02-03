@@ -4,6 +4,8 @@ import {Slot, SplashScreen} from 'expo-router'
 import {useFonts} from 'expo-font';
 import { useEffect } from 'react';
 
+SplashScreen.preventAutoHideAsync(); // prevents the splash screen from hiding automatically before the fonts are loaded.
+
 export default function App() 
 {
   const [fontsLoaded, error] = useFonts({
@@ -21,7 +23,7 @@ export default function App()
   useEffect(
   ()=> {
     if (error) throw error;
-    if (fontsLoaded) SplashScreen.hideAsync();
+    if (fontsLoaded) SplashScreen.hideAsync(); // hides the splash screen after the fonts are loaded.
   }, [fontsLoaded, error]);
   if (!fontsLoaded && !error) return null;
   return (
