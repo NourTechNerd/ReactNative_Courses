@@ -5,7 +5,7 @@ import {Link} from 'expo-router'
 export default function RoutLayout() {
   return (
     <View>
-      <Text>index</Text>
+      <Text className="text-3xl text-white font-pbold">Index</Text>
       <Link href="/profile" style={{color: 'blue'}}>Go to Profile</Link>
     </View>
   )

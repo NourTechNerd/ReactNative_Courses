@@ -25,7 +25,9 @@ export default function App()
     if (error) throw error;
     if (fontsLoaded) SplashScreen.hideAsync(); // hides the splash screen after the fonts are loaded.
   }, [fontsLoaded, error]);
-  if (!fontsLoaded && !error) return null;
+
+  if (!fontsLoaded && !error) return null; // Shows a Blank screen if the fonts are not loaded.
+
   return (
     <View className="flex flex-col items-center justify-center h-screen bg-primary">
       <Text className= "text-2xl font-bold text-secondary">Header</Text>
