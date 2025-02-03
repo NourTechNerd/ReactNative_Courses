@@ -6,7 +6,7 @@ export default function RoutLayout() {
   return (
     <View>
       <Text className="text-5xl text-white font-pbold">Index</Text>
-      <Link href="/profile" style={{color: 'blue'}}>Go to Profile</Link>
+      <Link href="/Home" className='text-2xl text-purple-500'>Go to Home</Link>
     </View>
   )
 }
