@@ -32,7 +32,7 @@ export default function App_layout()
     <View className="flex flex-col items-center justify-center h-screen bg-primary">
       <Text className= "text-2xl font-bold text-secondary">Header</Text>
       <Slot />
-      <Text>Footer</Text>
+      <Text className= "text-2xl font-bold text-secondary">Footer</Text>
       <StatusBar style="auto" />
     </View>
   );
