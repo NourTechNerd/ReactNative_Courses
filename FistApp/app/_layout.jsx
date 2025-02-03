@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 SplashScreen.preventAutoHideAsync(); // prevents the splash screen from hiding automatically before the fonts are loaded.
 
-export default function App() 
+export default function App_layout()
 {
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
