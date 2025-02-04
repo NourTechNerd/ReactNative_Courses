@@ -29,7 +29,7 @@ export default function App_layout()
   if (!fontsLoaded && !error) return null; // Shows a Blank screen if the fonts are not loaded.
 
   return (
-    <View className="flex flex-col items-center justify-center h-screen bg-primary">
+    <View className="flex flex-col h-full bg-primary">
       <Text className= "text-2xl font-bold text-secondary">Header</Text>
       <Slot />
       <Text className= "text-2xl font-bold text-secondary">Footer</Text>
