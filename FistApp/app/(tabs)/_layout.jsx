@@ -3,25 +3,9 @@ import React from 'react'
 import {Tabs, Redirect} from 'expo-router'
 import icons from '../icons.jsx'
 
-const TabIcon = ({icon,color,name,focused}) =>
+
+export default function tabs_layout ()
 {
-  return (
-    <View className= "flex flex-col items-center justify-center gap-1">
-      <Image
-      source = {icon}
-      resizeMode = "contain" // Ensures the entire image is visible within the container.
-      tintColor = {color}
-      className = "w-6 h-6"
-      />
-      <Text className= {`${focused ? 'font-psemibold' : 'font-semibold'} text-[10px]`}>
-      {name}
-      </Text> 
-    </View>
-  )
-
-}
-
-const _layout = () => {
   return (
     <View className = "h-full flex flex-row">
       <Tabs
@@ -40,14 +24,13 @@ const _layout = () => {
           {
             
             headerShown: false, // Hides the header.
-            tabBarIcon: ({color, focused}) => (
-              <TabIcon 
-              icon={icons.home} 
-              color={color} 
-              name="Home" 
-              focused={focused}
+            tabBarIcon: ({color}) => (
+              <Image
+              source = {icons.home}
+              resizeMode = "contain" // Ensures the entire image is visible within the container.
+              tintColor = {color}
+              className = "w-6 h-6"
               />
-
             )
             
           }
@@ -59,12 +42,12 @@ const _layout = () => {
           {
             
             headerShown: false, // Hides the header.
-            tabBarIcon: ({color, focused}) => (
-              <TabIcon 
-              icon={icons.plus} 
-              color={color} 
-              name="Create" 
-              focused={focused}
+            tabBarIcon: ({color}) => (
+              <Image
+              source = {icons.plus}
+              resizeMode = "contain" // Ensures the entire image is visible within the container.
+              tintColor = {color}
+              className = "w-6 h-6"
               />
 
             )
@@ -78,12 +61,12 @@ const _layout = () => {
           {
             
             headerShown: false, // Hides the header.
-            tabBarIcon: ({color, focused}) => (
-              <TabIcon 
-              icon={icons.profile} 
-              color={color} 
-              name="Profile" 
-              focused={focused}
+            tabBarIcon: ({color}) => (
+              <Image
+              source = {icons.profile}
+              resizeMode = "contain" // Ensures the entire image is visible within the container.
+              tintColor = {color}
+              className = "w-6 h-6"
               />
 
             )
@@ -98,12 +81,12 @@ const _layout = () => {
           {
             
             headerShown: false, // Hides the header.
-            tabBarIcon: ({color, focused}) => (
-              <TabIcon 
-              icon={icons.bookmark} 
-              color={color} 
-              name="Bookmark" 
-              focused={focused}
+            tabBarIcon: ({color}) => (
+              <Image
+              source = {icons.bookmark}
+              resizeMode = "contain" // Ensures the entire image is visible within the container.
+              tintColor = {color}
+              className = "w-6 h-6"
               />
 
             )
@@ -112,12 +95,8 @@ const _layout = () => {
         }
         />
       
-      
-      
-        
       </Tabs>
     </View>
   )
 }
 
-export default _layout
