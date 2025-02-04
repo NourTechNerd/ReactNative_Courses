@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text,Image } from 'react-native'
 import React from 'react'
 import {Tabs, Redirect} from 'expo-router'
 import icons from '../icons.jsx'
@@ -9,18 +9,19 @@ const TabIcon = ({icon,color,name,focused}) =>
     <View>
       <Image
       source = {icon}
-      resizeMode = "contain"
+      resizeMode = "contain" // Ensures the entire image is visible within the container.
       tintColor = {color}
       className = "w-6 h-6"
       />
-      <Text className="text-xs font-pbold text-white">{name}</Text>
+      <Text className="text-xs font-bold">{name}</Text>
     </View>
   )
 
 }
+
 const _layout = () => {
   return (
-    <View>
+    <View className = "flex-row w-full absolute bottom-0">
       <Tabs>
         <Tabs.Screen 
         name="Home"
