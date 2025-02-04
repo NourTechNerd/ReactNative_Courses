@@ -30,9 +30,7 @@ export default function App_layout()
 
   return (
     <View className="items-center justify-center bg-white">
-      <Text className= "text-2xl font-bold text-secondary">Header</Text>
       <Slot />
-      <Text className= "text-2xl font-bold text-secondary">Footer</Text>
       <StatusBar style="auto" />
     </View>
   );

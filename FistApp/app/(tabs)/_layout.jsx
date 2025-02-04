@@ -23,18 +23,22 @@ const TabIcon = ({icon,color,name,focused}) =>
 
 const _layout = () => {
   return (
-    <View className = "flex-row w-full absolute bottom-0 h-24">
+    <View className = "h-full flex flex-row">
       <Tabs
-      screenOptions={
-        {
-          tabBarShowLabel: false, // Hides the default labels on the tab bar.
-        }
-      }
+       screenOptions={{
+        tabBarShowLabel: true, // Hides tab labels
+        tabBarStyle: {
+          backgroundColor: "#fff", // Sets the tab bar background color
+          elevation: 0, // Removes shadow on Android
+          borderTopWidth: 0, // Removes top border
+        },
+      }}
       >
-        <Tabs.Screen 
+        <Tabs.Screen   
         name="Home" // It's the name of the route.
         options={
           {
+            
             headerShown: false, // Hides the header.
             tabBarIcon: ({color, focused}) => (
               <TabIcon 
@@ -49,6 +53,68 @@ const _layout = () => {
           }
         }
         />
+      <Tabs.Screen   
+        name="Create" // It's the name of the route.
+        options={
+          {
+            
+            headerShown: false, // Hides the header.
+            tabBarIcon: ({color, focused}) => (
+              <TabIcon 
+              icon={icons.plus} 
+              color={color} 
+              name="Create" 
+              focused={focused}
+              />
+
+            )
+            
+          }
+        }
+        />
+       <Tabs.Screen   
+        name="Profile" // It's the name of the route.
+        options={
+          {
+            
+            headerShown: false, // Hides the header.
+            tabBarIcon: ({color, focused}) => (
+              <TabIcon 
+              icon={icons.profile} 
+              color={color} 
+              name="Profile" 
+              focused={focused}
+              />
+
+            )
+            
+          }
+        }
+        />
+        
+        <Tabs.Screen   
+        name="Bookmark" // It's the name of the route.
+        options={
+          {
+            
+            headerShown: false, // Hides the header.
+            tabBarIcon: ({color, focused}) => (
+              <TabIcon 
+              icon={icons.bookmark} 
+              color={color} 
+              name="Bookmark" 
+              focused={focused}
+              />
+
+            )
+            
+          }
+        }
+        />
+      
+      
+      
+        
       </Tabs>
     </View>
   )
