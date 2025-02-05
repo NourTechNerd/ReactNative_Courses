@@ -1,6 +1,6 @@
-import {Text,ScrollView,View,Image} from 'react-native'
+import {Text,ScrollView,View,Image,StatusBar} from 'react-native'
 import React from 'react'
-import {Link} from 'expo-router'
+import {Redirect,router} from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Images from './images'
 import CustomButton from '../components/CustomButton'
@@ -30,12 +30,19 @@ export default function RoutLayout() {
           >
           </Image>
 
-          <CustomButton>
+          <CustomButton
+          title={"Continue with email"}
+          handlePress={() => router.push('/SingIn')}
+          Styles={"m-3 w-[60%]"}
+          isLoading={false}
+          >
           
           </CustomButton>
    
         </View>
       </ScrollView>
+
+      <StatusBar backgroundColor={'#161622'} barStyle="light-content" />
     </SafeAreaView>
   )
 }
