@@ -29,7 +29,7 @@ export default function App_layout()
   if (!fontsLoaded && !error) return null; // Shows a Blank screen if the fonts are not loaded.
 
   return (
-    <View className="items-center justify-center bg-white">
+    <View className="">
       <Slot />
       <StatusBar style="auto" />
     </View>
