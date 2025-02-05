@@ -32,7 +32,7 @@ export default function RoutLayout() {
 
           <CustomButton
           title={"Continue with email"}
-          handlePress={() => router.push('/SingIn')}
+          handlePress={() => router.push('/SignIn')}
           Styles={"m-3 w-[60%]"}
           isLoading={false}
           >
