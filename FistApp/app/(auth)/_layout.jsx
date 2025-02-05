@@ -1,11 +1,22 @@
 import {Text, View } from 'react-native'
 import React from 'react'
-
+import { Stack } from 'expo-router'
 export default function Auth_layout() {
   return (
-    <View>
+    <>
       <Text>Auth_layout</Text>
-    </View>
+      <Stack
+      initialRouteName='SignIn'
+      >
+        <Stack.Screen
+          name="SignIn"
+        />
+
+        <Stack.Screen
+          name="SignUp"
+        />
+      </Stack>
+    </>
   )
 }
 

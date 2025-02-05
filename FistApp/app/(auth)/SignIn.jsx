@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function SignIn() {
   return (
-    <View>
+    <View className="bg-primary h-full">
       <Text>SignIn</Text>
     </View>
   )
