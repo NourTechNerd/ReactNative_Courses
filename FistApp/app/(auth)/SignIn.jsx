@@ -21,19 +21,23 @@ export default function SignIn() {
         <Text
         className = "text-white text-2xl font-pbold m-0"
         >Log In to Aora</Text>
-        <CustomInputField
-          Value = {Email}
-          placeholderText={"Email"}
-          isPassword = {false}
-          SetValue={setEmail}
-        />
 
-        <CustomInputField
-          Value={Password}
-          placeholderText={"Password"}
-          isPassword = {true}
-          SetValue={setPassword}
-        />
+        <View className = "flex flex-col mt-5">
+              <CustomInputField
+              Value = {Email}
+              placeholderText={"Email"}
+              isPassword = {false}
+              SetValue={setEmail}
+            />
+
+            <CustomInputField
+              Value={Password}
+              placeholderText={"Password"}
+              isPassword = {true}
+              SetValue={setPassword}
+            />
+        </View>
+       
 
       </View>
       
