@@ -1,13 +1,12 @@
-import {Text,ScrollView,View,Image,StatusBar} from 'react-native'
+import {Text,ScrollView,View,Image} from 'react-native'
 import React from 'react'
-import {Redirect,router} from 'expo-router'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import {router} from 'expo-router'
 import Images from './images'
 import CustomButton from '../components/CustomButton'
 
 export default function RoutLayout() {
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <View className="bg-primary h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}> 
         <View className="flex flex-col items-center h-full">
           <Image 
@@ -41,9 +40,7 @@ export default function RoutLayout() {
    
         </View>
       </ScrollView>
-
-      <StatusBar backgroundColor={'#161622'} barStyle="light-content" />
-    </SafeAreaView>
+    </View>
   )
 }
 
