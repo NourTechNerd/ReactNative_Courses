@@ -4,7 +4,6 @@ import { Stack } from 'expo-router'
 export default function Auth_layout() {
   return (
     <View className="h-full">
-      <Text>Auth_layouwect</Text>
       <Stack
       >
         <Stack.Screen

@@ -29,7 +29,7 @@ export default function App_layout()
   if (!fontsLoaded && !error) return null; // Shows a Blank screen if the fonts are not loaded.
 
   return (
-    <SafeAreaView className="">
+    <SafeAreaView >
       <Slot />
       <StatusBar backgroundColor={'#161622'} style='light'/>
     </SafeAreaView>
