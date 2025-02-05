@@ -3,20 +3,25 @@ import React from 'react'
 import { Stack } from 'expo-router'
 export default function Auth_layout() {
   return (
-    <>
-      <Text>Auth_layout</Text>
+    <View className="h-full">
+      <Text>Auth_layouwect</Text>
       <Stack
-      initialRouteName='SignIn'
       >
         <Stack.Screen
           name="SignIn"
+          options={{
+            headerShown: false,
+          }}
         />
 
         <Stack.Screen
           name="SignUp"
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack>
-    </>
+    </View>
   )
 }
 

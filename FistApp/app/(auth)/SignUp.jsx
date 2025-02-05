@@ -3,7 +3,7 @@ import React from 'react'
 
 const SignUp = () => {
   return (
-    <View>
+    <View className="bg-red-800 h-full">
       <Text>SignUp</Text>
     </View>
   )
