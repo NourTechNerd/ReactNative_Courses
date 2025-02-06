@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Slot, SplashScreen} from 'expo-router'
+import {Stack, SplashScreen} from 'expo-router'
 import {useFonts} from 'expo-font';
 import { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -30,7 +30,20 @@ export default function App_layout()
 
   return (
     <SafeAreaView >
-      <Slot />
+      <Stack>
+        <Stack.Screen 
+        name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(auth)"
+          options={{
+            headerShown: false, // This important for iOS phones for Android it is not needed.
+          }}
+          />
+      </Stack>
       <StatusBar backgroundColor={'#161622'} style='light'/>
     </SafeAreaView>
   );

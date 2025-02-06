@@ -28,7 +28,7 @@ export default function tabs_layout ()
       }}
       >
         <Tabs.Screen   
-        name="Home" // It's the name of the route.
+        name="Home" // It's the name of the file to be rendered.
         options={
           {
             
@@ -46,7 +46,7 @@ export default function tabs_layout ()
         }
         />
       <Tabs.Screen   
-        name="Create" // It's the name of the route.
+        name="Create" // The name of the file to be rendered.
         options={
           {
             
@@ -65,7 +65,7 @@ export default function tabs_layout ()
         }
         />    
         <Tabs.Screen   
-        name="Bookmark" // It's the name of the route.
+        name="Bookmark" 
         options={
           {
             
@@ -85,7 +85,7 @@ export default function tabs_layout ()
         />
       
       <Tabs.Screen   
-        name="Profile" // It's the name of the route.
+        name="Profile"
         options={
           {
             

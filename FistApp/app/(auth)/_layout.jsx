@@ -7,7 +7,7 @@ export default function Auth_layout() {
       <Stack
       >
         <Stack.Screen
-          name="SignIn"
+          name="SignIn" // The name of the file that will be rendered
           options={{
             headerShown: false,
           }}
