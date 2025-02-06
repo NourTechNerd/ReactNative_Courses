@@ -1,11 +1,14 @@
-import { View, Text } from 'react-native'
+import { View, Text,ScrollView } from 'react-native'
 import React from 'react'
 
 const SignUp = () => {
   return (
-    <View className="bg-red-800 h-full">
-      <Text>SignUp</Text>
-    </View>
+    <ScrollView className = "bg-red-800 h-full w-full">
+       <View>
+          <Text>SignUp</Text>
+       </View>
+    </ScrollView>
+   
   )
 }
 

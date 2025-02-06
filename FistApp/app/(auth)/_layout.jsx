@@ -1,9 +1,12 @@
-import {Text, View } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar';
+
+
 export default function Auth_layout() {
   return (
-    <View className="h-full">
+    <SafeAreaView className="h-full">
       <Stack
       >
         <Stack.Screen
@@ -20,7 +23,8 @@ export default function Auth_layout() {
           }}
         />
       </Stack>
-    </View>
+    <StatusBar backgroundColor='#161622' style="light" />
+    </SafeAreaView>
   )
 }
 

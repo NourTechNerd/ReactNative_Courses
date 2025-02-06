@@ -1,8 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import {Stack, SplashScreen} from 'expo-router'
 import {useFonts} from 'expo-font';
 import { useEffect } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context'
+
 
 SplashScreen.preventAutoHideAsync(); // prevents the splash screen from hiding automatically before the fonts are loaded.
 
@@ -29,7 +28,6 @@ export default function App_layout()
   if (!fontsLoaded && !error) return null; // Shows a Blank screen if the fonts are not loaded.
 
   return (
-    <SafeAreaView >
       <Stack>
         <Stack.Screen 
         name="index"
@@ -44,8 +42,7 @@ export default function App_layout()
           }}
           />
       </Stack>
-      <StatusBar backgroundColor={'#161622'} style='light'/>
-    </SafeAreaView>
+      
   );
 }
 
