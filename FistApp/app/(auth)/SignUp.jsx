@@ -9,8 +9,10 @@ import {Link} from 'expo-router'
 export default function SignUp() {
 
 
+  const [Username,setUsername] = useState("")
   const [Email,setEmail] = useState("")
   const [Password,setPassword] = useState("")
+
   
   function handeSignUp() {
     console.log("Email",Email)
@@ -30,6 +32,12 @@ export default function SignUp() {
         >Sign Up In to Aora</Text>
 
         <View className = "flex mt-5">
+            <CustomInputField
+              Value = {Username}
+              placeholderText={"Username"}
+              isPassword = {false}
+              SetValue={setUsername}
+            />
               <CustomInputField
               Value = {Email}
               placeholderText={"Email"}
@@ -51,6 +59,11 @@ export default function SignUp() {
         handlePress={handeSignUp}
         >
         </CustomButton>
+        <Text className="text-gray-100 mt-5 text-sm font-pregular">
+          Have already an account ?
+          <Link href = "/SignIn" className='text-secondary font-psemibold text-[16px]'> Sign In</Link>
+        </Text>
+       
     
       </View>
       
