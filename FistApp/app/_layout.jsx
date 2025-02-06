@@ -30,7 +30,7 @@ export default function App_layout()
   return (
       <Stack>
         <Stack.Screen 
-        name="index"
+        name="index" // The name of the file to be rendered.
           options={{
             headerShown: false,
           }}
@@ -39,6 +39,18 @@ export default function App_layout()
           name="(auth)"
           options={{
             headerShown: false, // This important for iOS phones for Android it is not needed.
+          }}
+          />
+          <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false,
+          }}
+          />
+          <Stack.Screen
+          name="search/query"
+          options={{
+            headerShown: false,
           }}
           />
       </Stack>

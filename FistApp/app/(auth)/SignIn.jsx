@@ -19,7 +19,7 @@ export default function SignIn() {
 
   return (
     <ScrollView className="bg-primary h-full w-full">
-      <View className="items-center">
+      <View className="items-center mt-10">
         <Image
         source={Images.logo}
         resizeMode='contain'
