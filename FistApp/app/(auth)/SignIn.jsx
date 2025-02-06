@@ -22,7 +22,7 @@ export default function SignIn() {
         className = "text-white text-2xl font-pbold m-0"
         >Log In to Aora</Text>
 
-        <View className = "flex flex-col mt-5">
+        <View className = "flex mt-5">
               <CustomInputField
               Value = {Email}
               placeholderText={"Email"}

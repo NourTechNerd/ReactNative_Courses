@@ -1,11 +1,14 @@
-import { View, TextInput } from 'react-native'
-import React from 'react'
+import { View, TextInput,TouchableOpacity,Image } from 'react-native'
+import {useState} from 'react'
+import icons from '../app/icons'
+
 
 export default function CustomInputField({placeholderText,isPassword,Value,SetValue}) {
     function handleChange(text)
     {
         SetValue(text)
     }
+    const [showPassword,setShowPassword] = useState(isPassword)
   return (
     <View>
       <TextInput
@@ -13,11 +16,26 @@ export default function CustomInputField({placeholderText,isPassword,Value,SetVa
       className="rounded-full border-2 border-secondary-100 p-3 m-3 min-w-[300px] h-12 text-white font-psemibold text-center focus:border-ternary bg-black-100"
       placeholder= {placeholderText}
       placeholderTextColor="#fff"
-      secureTextEntry = {isPassword} // Makes the text hidden as dots
+      secureTextEntry = {showPassword} // Makes the text hidden as dots
       onChangeText={handleChange}
       >
-
       </TextInput>
+      {
+        isPassword &&
+            <TouchableOpacity
+            onPress={() => setShowPassword(!showPassword)}
+            className="absolute right-8 top-6"
+            >
+                <Image
+                source = {showPassword ? icons.eyeHide : icons.eye}
+                resizeMode = 'contain'
+                 className = "w-6 h-6"
+                />
+        </TouchableOpacity>
+      }
+      
+    
+      
     </View>
   )
 }
