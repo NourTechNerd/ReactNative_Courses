@@ -1,22 +1,44 @@
-import { View, Text, ScrollView,Image } from 'react-native'
+import { View, Text, ScrollView,Image,Alert } from 'react-native'
 import {useState } from 'react'
 import Images from '../images'
 import CustomInputField from '../../components/CustomInputField'
 import CustomButton from '../../components/CustomButton'
-import {Link} from 'expo-router'
+import {Link,router} from 'expo-router'
 import { CreateUser } from '../../lib/Appwrite'
 
 
 export default function SignUp() {
 
 
-  const [Username,setUsername] = useState("")
-  const [Email,setEmail] = useState("")
-  const [Password,setPassword] = useState("")
+  const [Username,setUsername] = useState("");
+  const [Email,setEmail] = useState("");
+  const [Password,setPassword] = useState("");
+  const [isSubmitting,setIsSubmitting] = useState(false);
 
   
-  function handeSignUp() {
-    CreateUser()
+  async function handeSignUp() {
+    if (Username && Email && Password) 
+    {
+      try { 
+
+      const Result = await CreateUser(Username,Email,Password);
+      setIsSubmitting(true);
+      router.replace("/Home");
+      } 
+      catch (error) {
+        Alert.alert("Error",error.message);
+        
+      }
+      finally {
+        setIsSubmitting(false);
+      }
+
+    }
+    else 
+    {
+      Alert.alert("Error","Please fill all the fields");
+      //console.log(Theuser);
+    }
   }
 
   return (
@@ -54,7 +76,7 @@ export default function SignUp() {
         </View>
         <CustomButton
         title = {"Sign Up"}
-        isLoading={false}
+        isLoading={isSubmitting}
         Styles={"m-3 w-[200px]"}
         handlePress={handeSignUp}
         >
@@ -64,7 +86,6 @@ export default function SignUp() {
           <Link href = "/SignIn" className='text-secondary font-psemibold text-[16px]'> Sign In</Link>
         </Text>
        
-    
       </View>
       
     </ScrollView>

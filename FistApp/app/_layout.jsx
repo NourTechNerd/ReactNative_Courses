@@ -2,7 +2,6 @@ import {Stack, SplashScreen} from 'expo-router'
 import {useFonts} from 'expo-font';
 import { useEffect } from 'react';
 
-
 SplashScreen.preventAutoHideAsync(); // prevents the splash screen from hiding automatically before the fonts are loaded.
 
 export default function App_layout()
@@ -28,6 +27,7 @@ export default function App_layout()
   if (!fontsLoaded && !error) return null; // Shows a Blank screen if the fonts are not loaded.
 
   return (
+
       <Stack>
         <Stack.Screen 
         name="index" // The name of the file to be rendered.
@@ -53,8 +53,8 @@ export default function App_layout()
             headerShown: false,
           }}
           />
+  
       </Stack>
-      
   );
 }
 
