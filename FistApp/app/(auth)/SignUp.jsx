@@ -4,6 +4,7 @@ import Images from '../images'
 import CustomInputField from '../../components/CustomInputField'
 import CustomButton from '../../components/CustomButton'
 import {Link} from 'expo-router'
+import { CreateUser } from '../../lib/Appwrite'
 
 
 export default function SignUp() {
@@ -15,8 +16,7 @@ export default function SignUp() {
 
   
   function handeSignUp() {
-    console.log("Email",Email)
-    console.log("Password",Password)
+    CreateUser()
   }
 
   return (
