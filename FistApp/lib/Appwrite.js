@@ -67,3 +67,15 @@ export async function LogIn(email,password)
     }
 }
 
+export async function GetCurrentUser()
+{
+try {
+    
+    const CurrentAccount = await account.get();
+    if(!CurrentAccount) throw new Error("No Account Found");
+    return CurrentAccount;
+} catch (error) {
+    console.log(error.message);
+    return null;
+}
+}

@@ -1,13 +1,15 @@
 import { View, Text,Image } from 'react-native'
 import React from 'react'
-import {Tabs, Redirect} from 'expo-router'
+import {Tabs} from 'expo-router'
 import icons from '../icons.jsx'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function tabs_layout ()
 {
   return (
-    <View className = "h-full flex flex-row">
+    <SafeAreaView className = "h-full flex flex-row">
       <Tabs
        screenOptions={{
         tabBarShowLabel: true, // Hides tab labels
@@ -105,7 +107,9 @@ export default function tabs_layout ()
         />
       
       </Tabs>
-    </View>
+    <StatusBar backgroundColor='#161622' style="light" />
+    </SafeAreaView>
   )
 }
+
 
