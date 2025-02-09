@@ -32,9 +32,6 @@ export async function  CreateUser(username_,email_,password_)
     if(!newAccount) throw Error;
     const avatarURL =  avatars.getInitials(username_);
 
-    // Sign In the new user
-    await SignIn(email_,password_);
-
     // Add the New User the Database
     const NewUser = await databases.createDocument(
         appwriteConfig.databaseId,
@@ -56,7 +53,7 @@ export async function  CreateUser(username_,email_,password_)
    }
 }
 
-export async function SignIn(email,password)
+export async function LogIn(email,password)
 {
     try {
         // Create a New Session for the User

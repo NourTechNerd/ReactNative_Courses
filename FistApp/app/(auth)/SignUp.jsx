@@ -13,24 +13,20 @@ export default function SignUp() {
   const [Username,setUsername] = useState("");
   const [Email,setEmail] = useState("");
   const [Password,setPassword] = useState("");
-  const [isSubmitting,setIsSubmitting] = useState(false);
-
   
   async function handeSignUp() {
     if (Username && Email && Password) 
     {
       try { 
 
-      const Result = await CreateUser(Username,Email,Password);
-      setIsSubmitting(true);
-      router.replace("/Home");
+      await CreateUser(Username,Email,Password);
+      router.replace("/SignIn");
+
+      console.log("SignUp Success");
       } 
       catch (error) {
         Alert.alert("Error",error.message);
         
-      }
-      finally {
-        setIsSubmitting(false);
       }
 
     }
@@ -76,7 +72,7 @@ export default function SignUp() {
         </View>
         <CustomButton
         title = {"Sign Up"}
-        isLoading={isSubmitting}
+        isLoading={false}
         Styles={"m-3 w-[200px]"}
         handlePress={handeSignUp}
         >

@@ -1,10 +1,10 @@
-import { View, Text, ScrollView,Image } from 'react-native'
+import { View, Text, ScrollView,Image,Alert } from 'react-native'
 import {useState } from 'react'
 import Images from '../images'
 import CustomInputField from '../../components/CustomInputField'
 import CustomButton from '../../components/CustomButton'
-import {Link} from 'expo-router'
-
+import {Link,router} from 'expo-router'
+import { LogIn } from '../../lib/Appwrite'
 
 export default function SignIn() {
 
@@ -12,9 +12,22 @@ export default function SignIn() {
   const [Email,setEmail] = useState("")
   const [Password,setPassword] = useState("")
   
-  function handleSignIn() {
-    console.log("Email",Email)
-    console.log("Password",Password)
+  async function handleSignIn() {
+    if (Email && Password)
+    {
+      try {
+        await LogIn(Email,Password);
+        router.replace("/Home");
+        console.log("SignIn Success");
+
+      } catch (error) {
+        Alert.alert("Error",error.message); 
+      }
+    }
+    else
+   {
+    Alert.alert("Error","Please fill all the fields");
+   }
   }
 
   return (
