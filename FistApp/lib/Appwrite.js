@@ -71,11 +71,22 @@ export async function GetCurrentUser()
 {
 try {
     
-    const CurrentAccount = await account.get();
+    // Get the User Account
+    const CurrentAccount = await account.get(); // Get the current logged in user account
     if(!CurrentAccount) throw new Error("No Account Found");
-    return CurrentAccount;
+    
+    // Get the User Informations from the Database
+    const CurrentUser = await databases.getDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.usersCollectionId,
+        CurrentAccount.$id
+    );
+    if (!CurrentUser) throw new Error("No User Found");
+    return CurrentUser;
+    
 } catch (error) {
     console.log(error.message);
     return null;
 }
 }
+
