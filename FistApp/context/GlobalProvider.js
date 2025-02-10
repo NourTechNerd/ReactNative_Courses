@@ -8,7 +8,7 @@ export function useGlobaContext(){
     return useContext(GlobalContext);
 } 
 
-function GlobalProvider({children}) {
+export function GlobalProvider({children}) {
     const [isLoggedIn,setIsLoggedIn] = useState(false);
     const [User,setUser] = useState(null);
     const [isLoading,setIsLoading] = useState(true);
@@ -18,8 +18,14 @@ function GlobalProvider({children}) {
             const LoggedInUser = await GetCurrentUser();
             setUser(LoggedInUser);
             setIsLoggedIn(true);
+
+           // console.log("LoggedInUser",LoggedInUser);
+           // console.log(isLoggedIn);
+            
+            
         } catch (error) {
             console.log(error.message);
+            setIsLoggedIn(false);
         }
         finally{
             setIsLoading(false);
@@ -29,11 +35,17 @@ function GlobalProvider({children}) {
         ()=> {
             handleLogin();
         }
-    ,[]
-    );
+    ,[]);
     
     return (
-        <GlobalContext.Provider>
+        <GlobalContext.Provider
+        value = {{
+            isLoggedIn,
+            setIsLoggedIn,
+            User,
+            setUser,
+            isLoading,
+        }}>
             {children}
         </GlobalContext.Provider>
     )

@@ -1,10 +1,14 @@
 import {Text,ScrollView,View,Image} from 'react-native'
 import React from 'react'
-import {router} from 'expo-router'
+import {router,Redirect} from 'expo-router'
 import Images from './images'
 import CustomButton from '../components/CustomButton'
+import { useGlobaContext } from '../context/GlobalProvider'
 
 export default function RoutLayout() {
+  const {isLoggedIn,isLoading} = useGlobaContext();
+  if (!isLoading && isLoggedIn) return <Redirect  href = "/Home" />;
+  
   return (
     <View className="bg-primary h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}> 
@@ -24,7 +28,7 @@ export default function RoutLayout() {
           </Text>
           <Image
           source={Images.path}
-          className="w-[136px] h-[15px] absolute bottom-[165px] right-20"
+          className="w-[136px] h-[15px] absolute bottom-[200px] right-20"
           resizeMode='contain'
           >
           </Image>
