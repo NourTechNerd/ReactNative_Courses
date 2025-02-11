@@ -107,7 +107,7 @@ export default function tabs_layout ()
         />
       
       </Tabs>
-    <StatusBar backgroundColor='#161622' style="light" />
+    <StatusBar backgroundColor='#000' style="" />
     </SafeAreaView>
   )
 }
