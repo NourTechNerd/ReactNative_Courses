@@ -3,39 +3,33 @@ import {useState} from 'react'
 import icons from '../app/icons'
 
 
-export default function SearchInputField({placeholderText,isPassword,Value,SetValue}) {
+export default function SearchInputField({placeholderText,Value,SetValue}) {
     function handleChange(text)
     {
-        SetValue(text)
+        //SetValue(text)
     }
-    const [showPassword,setShowPassword] = useState(isPassword)
+
   return (
-    <View>
+    <View className = "flex flex-row items-center">
       <TextInput
       value= {Value}
-      className="rounded-xl border-2 border-secondary-100 p-3 m-3 min-w-[300px] h-12 text-white font-psemibold text-center focus:border-ternary bg-black-100"
+      className="text-white rounded-xl border-2 border-black-200 min-w-[300px] h-14 font-pregular text-center focus:border-secondary-200 bg-black-100 m-3"
       placeholder= {placeholderText}
-      placeholderTextColor="#fff"
-      secureTextEntry = {showPassword} // Makes the text hidden as dots
+      placeholderTextColor = "#fff"
+    
       onChangeText={handleChange}
       >
       </TextInput>
-      {
-        isPassword &&
-            <TouchableOpacity
-            onPress={() => setShowPassword(!showPassword)}
-            className="absolute right-8 top-6"
-            >
-                <Image
-                source = {showPassword ? icons.eyeHide : icons.eye}
-                resizeMode = 'contain'
-                 className = "w-6 h-6"
-                />
-        </TouchableOpacity>
-      }
-      
+
+      <TouchableOpacity className="absolute right-10 h-10 w-12 items-center justify-center rounded-xl">
+      <Image
+      source = {icons.search}
+      resizeMode = 'contain'
+      className = "w-6 h-6"
+      />
+      </TouchableOpacity>
+
     
-      
     </View>
   )
 }
