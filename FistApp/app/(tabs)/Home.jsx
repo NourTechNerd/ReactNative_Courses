@@ -1,22 +1,51 @@
-import { View, Text ,FlatList} from 'react-native'
-import {useState} from 'react'
+import { View, Text ,FlatList,RefreshControl,Alert} from 'react-native'
+import {useState,useEffect} from 'react'
 import { useGlobaContext } from '../../context/GlobalProvider'
 import SearchInputField from '../../components/SearchInputField'
 import Trending from '../../components/Trending'
 import EmptyState from '../../components/EmptyState'
+import { GetVideos } from '../../lib/Appwrite'
+
 
 // We remove ScrollView and let FlatList handle the scrolling.
 
 const Home = () => {
   const {User} = useGlobaContext();
   const [query, setQuery] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
+  const [videos, setVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+   
+
+  async function getVideos() {
+    try {
+      setIsLoading(true);
+      const videos = await GetVideos();
+      //console.log("videos 0",videos[0]);
+      setVideos(videos);
+    } catch (error) {
+      Alert.alert("Error",error.message);
+    }
+    finally{
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() =>{getVideos();},[])
+  
+  async function handleRefresh() {
+   setRefreshing(true);
+   // Call your API here --> see if any new videos appeared
+   setRefreshing(false);
+   console.log("Refreshed");
+  }
 
 
   return (
     <View className="bg-primary h-full w-full">
       <FlatList
-      //data={[{id : 10},{id :22},{id : 39}]} // List of Items 
-      data={[]} 
+      data={[{id : 10},{id :22},{id : 39}]} // List of Items 
+      //data={[]} 
       keyExtractor={(item) => item.id} // Unique Key for each Item
       renderItem={({item}) => <Text className = "text-white">{item.id}</Text>} // Renders each Item
       // The Header of the List
@@ -51,8 +80,8 @@ const Home = () => {
           />
         </View>
       }
-      >
-      </FlatList>
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />}
+      />
 
     </View>
   )

@@ -74,7 +74,7 @@ try {
     // Get the User Account
     const CurrentAccount = await account.get(); // Get the current logged in user account
     if(!CurrentAccount) throw new Error("No Account Found");
-
+    //console.log(CurrentAccount);
     // Get the User Informations from the Database
     const results = await databases.listDocuments(
         appwriteConfig.databaseId,
@@ -91,4 +91,29 @@ try {
     return null;
 }
 }
+
+export async function GetVideos()
+{
+    try {
+        const videos = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+        )
+    
+        if (videos.total === 0) throw new Error("No Videos Found");
+        //console.log("videos found",videos);
+        return videos.documents;
+    } catch (error) {
+        console.log(error.message);
+        
+    }
+
+}
+
+
+
+
+
+
+
 
