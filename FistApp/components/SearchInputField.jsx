@@ -10,10 +10,10 @@ export default function SearchInputField({placeholderText,Value,SetValue}) {
     }
 
   return (
-    <View className = "flex flex-row items-center">
+    <View className = "flex flex-row items-center p-2 justify-center">
       <TextInput
       value= {Value}
-      className="text-white rounded-xl border-2 border-black-200 min-w-[300px] h-14 font-pregular text-center focus:border-secondary-200 bg-black-100 m-3"
+      className="text-black-100 rounded-xl border-2 border-black-200 h-14 font-pregular  focus:border-secondary-200 bg-black-100 w-full px-3"
       placeholder= {placeholderText}
       placeholderTextColor = "#fff"
     
@@ -21,7 +21,7 @@ export default function SearchInputField({placeholderText,Value,SetValue}) {
       >
       </TextInput>
 
-      <TouchableOpacity className="absolute right-10 h-10 w-12 items-center justify-center rounded-xl">
+      <TouchableOpacity className="absolute right-3 h-10 w-12 items-center justify-center rounded-xl">
       <Image
       source = {icons.search}
       resizeMode = 'contain'

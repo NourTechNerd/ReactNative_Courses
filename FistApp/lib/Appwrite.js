@@ -110,6 +110,24 @@ export async function GetVideos()
 
 }
 
+export async function GetLatestVideos()
+{
+    try {
+        const videos = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            [Query.orderDesc('$createdAt'),Query.limit(2)]
+        )
+    
+        if (videos.total === 0) throw new Error("No Videos Found");
+        //console.log("videos found",videos);
+        return videos.documents;
+    } catch (error) {
+        console.log(error.message);
+        
+    }
+
+}
 
 
 

@@ -4,16 +4,17 @@ import { useGlobaContext } from '../../context/GlobalProvider'
 import SearchInputField from '../../components/SearchInputField'
 import Trending from '../../components/Trending'
 import EmptyState from '../../components/EmptyState'
-import { GetVideos } from '../../lib/Appwrite'
-
+import { GetVideos,GetLatestVideos } from '../../lib/Appwrite'
+import VideoCard from '../../components/VideoCard'
 
 // We remove ScrollView and let FlatList handle the scrolling.
-
+// 2h:52 min
 const Home = () => {
   const {User} = useGlobaContext();
   const [query, setQuery] = useState("");
   const [refreshing, setRefreshing] = useState(false);
   const [videos, setVideos] = useState([]);
+  const [latestVideos, setLatestVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
    
 
@@ -21,7 +22,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const videos = await GetVideos();
-      //console.log("videos 0",videos[0]);
+      console.log("videos 1",videos[1]);
       setVideos(videos);
     } catch (error) {
       Alert.alert("Error",error.message);
@@ -30,12 +31,26 @@ const Home = () => {
       setIsLoading(false);
     }
   }
+  async function getLatestVideos() {
+    try {
+      setIsLoading(true);
+      const videos = await GetLatestVideos();
+      console.log("latest videos :",videos.length);
+      setLatestVideos(videos);
+    } catch (error) {
+      Alert.alert("Error",error.message);
+    }
+    finally{
+      setIsLoading(false);
+    }
+  }
 
-  useEffect(() =>{getVideos();},[])
+  useEffect(() =>{getVideos();getLatestVideos();},[])
   
   async function handleRefresh() {
    setRefreshing(true);
    // Call your API here --> see if any new videos appeared
+   await getVideos();
    setRefreshing(false);
    console.log("Refreshed");
   }
@@ -44,10 +59,10 @@ const Home = () => {
   return (
     <View className="bg-primary h-full w-full">
       <FlatList
-      data={[{id : 10},{id :22},{id : 39}]} // List of Items 
+      data={videos} // List of Items 
       //data={[]} 
-      keyExtractor={(item) => item.id} // Unique Key for each Item
-      renderItem={({item}) => <Text className = "text-white">{item.id}</Text>} // Renders each Item
+      keyExtractor={(item) => item.$id} // Unique Key for each Item
+      renderItem={({item}) => <VideoCard video = {item} />} // Renders each Item
       // The Header of the List
       ListHeaderComponent={()=>
        <View className = "space-y-2 ml-3 mt-3">
@@ -64,8 +79,7 @@ const Home = () => {
 
           {/* Latest added videos to Aora (Horizantal Scroling) */}
             <View className = "mt-10 ml-3 space-y-2">
-              <Text className= "text-white">Latest added videos to Aora</Text>
-              <Trending posts={[{id : 1},{id :2},{id : 3}]} />
+            <Trending posts = {latestVideos}/>
             </View>
 
        </View>
