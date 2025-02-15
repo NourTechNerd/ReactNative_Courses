@@ -73,8 +73,6 @@ const Home = () => {
 
           {/* Search Input Field */}
             <SearchInputField
-            placeholderText="Search for a video"
-            SetValue={setQuery}
             />
 
           {/* Latest added videos to Aora (Horizantal Scroling) */}
