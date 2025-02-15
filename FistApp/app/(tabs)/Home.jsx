@@ -62,7 +62,7 @@ const Home = () => {
       data={videos} // List of Items 
       //data={[]} 
       keyExtractor={(item) => item.$id} // Unique Key for each Item
-      renderItem={({item}) => <VideoCard video = {item} />} // Renders each Item
+      renderItem={({item}) => <VideoCard Post = {item} />} // Renders each Item
       // The Header of the List
       ListHeaderComponent={()=>
        <View className = "space-y-2 ml-3 mt-3">

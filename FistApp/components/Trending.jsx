@@ -31,8 +31,8 @@ const zoomOut = {
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
 
-  console.log("activeItem",activeItem);
-  console.log("item",item.video);
+  //console.log("activeItem",activeItem);
+  console.log("item",item);
   return (
     <Animatable.View
       className="mr-5"
@@ -42,7 +42,7 @@ const TrendingItem = ({ activeItem, item }) => {
       {play ? (
         <Video
           source={{ uri: item.video }}
-          className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
+          className="w-52 h-72 rounded-[33px] mt-3 bg-primary"
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
           shouldPlay
