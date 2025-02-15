@@ -22,7 +22,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const videos = await GetVideos();
-      console.log("videos 1",videos[1]);
+      //console.log("videos 1",videos[1]);
       setVideos(videos);
     } catch (error) {
       Alert.alert("Error",error.message);
@@ -35,7 +35,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const videos = await GetLatestVideos();
-      console.log("latest videos :",videos.length);
+      //console.log("latest videos :",videos.length);
       setLatestVideos(videos);
     } catch (error) {
       Alert.alert("Error",error.message);

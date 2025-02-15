@@ -5,7 +5,7 @@ import { ResizeMode, Video } from "expo-av";
 
 export default function VideoCard({Post}) {
     const [IsPlaying, setIsPlaying] = useState(false);
-  console.log("Post",Post);
+  //console.log("Post",Post);
   return (
     <View className= "flex flex-col space-y-2 mt-5 ml-5 mr-5">
         <View className = "flex flex-row items-center">

@@ -8,7 +8,7 @@ export default function SearchInputField() {
 
     const currentRoute = usePathname(); // RN hook that returns the current route. "/home", "/search/query"...
     const [query, setQuery] = useState("");
-    console.log("currentRoute",currentRoute);
+    //console.log("currentRoute",currentRoute);
     
     function handlePress(){
       if(!query){

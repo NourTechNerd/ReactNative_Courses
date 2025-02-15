@@ -8,7 +8,7 @@ export default function query() {
   
   return (
     <View>
-      <Text className="text-white text-3xl">{query}</Text>
+      <Text className="text-primary text-3xl">{query}</Text>
     </View>
   )
 }
