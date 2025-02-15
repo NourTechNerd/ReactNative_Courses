@@ -116,7 +116,7 @@ export async function GetLatestVideos()
         const videos = await databases.listDocuments(
             appwriteConfig.databaseId,
             appwriteConfig.videosCollectionId,
-            [Query.orderDesc('$createdAt'),Query.limit(2)]
+            [Query.orderDesc('$createdAt'),Query.limit(3)]
         )
     
         if (videos.total === 0) throw new Error("No Videos Found");

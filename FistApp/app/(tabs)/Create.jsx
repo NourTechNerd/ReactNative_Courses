@@ -1,12 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Create = () => {
+export default function Create() {
   return (
-    <View className="bg-slate-500 h-full">
-       <Text className= "text-lg m-7">Create page</Text>
+    <View>
+      <Text>Create</Text>
     </View>
   )
 }
-
-export default Create
