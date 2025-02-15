@@ -52,7 +52,7 @@ export default function App_layout()
             }}
             />
             <Stack.Screen
-            name="search/query"
+            name="search/[query]"
             options={{
               headerShown: false,
             }}

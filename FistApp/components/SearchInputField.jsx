@@ -4,10 +4,10 @@ import icons from '../app/icons'
 import { usePathname,router } from 'expo-router'
 
 
-export default function SearchInputField() {
+export default function SearchInputField({initialQuery}) {
 
     const currentRoute = usePathname(); // RN hook that returns the current route. "/home", "/search/query"...
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(initialQuery);
     //console.log("currentRoute",currentRoute);
     
     function handlePress(){
