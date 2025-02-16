@@ -4,11 +4,13 @@ import Images from '../images'
 import CustomInputField from '../../components/CustomInputField'
 import CustomButton from '../../components/CustomButton'
 import {Link,router} from 'expo-router'
-import { LogIn } from '../../lib/Appwrite'
+import { LogIn,GetCurrentUser } from '../../lib/Appwrite'
+import { useGlobaContext } from '../../context/GlobalProvider'
+
 
 export default function SignIn() {
 
-
+  const {setUser,setIsLoggedIn} = useGlobaContext();
   const [Email,setEmail] = useState("")
   const [Password,setPassword] = useState("")
   
@@ -17,9 +19,14 @@ export default function SignIn() {
     {
       try {
         await LogIn(Email,Password);
+        
+        // Set the User to the Global Context
+        const currentUser = await GetCurrentUser();
+        setUser(currentUser);
+        setIsLoggedIn(true);
+
         router.replace("/Home");
         console.log("SignIn Success");
-
       } catch (error) {
         Alert.alert("Error",error.message); 
       }

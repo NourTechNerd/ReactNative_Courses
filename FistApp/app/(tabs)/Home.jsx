@@ -11,12 +11,13 @@ import VideoCard from '../../components/VideoCard'
 // 2h:52 min
 const Home = () => {
   const {User} = useGlobaContext();
-  const [query, setQuery] = useState("");
   const [refreshing, setRefreshing] = useState(false);
   const [videos, setVideos] = useState([]);
   const [latestVideos, setLatestVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-   
+    
+  console.log("Usersdc",User);
+  
 
   async function getVideos() {
     try {
@@ -69,17 +70,20 @@ const Home = () => {
           {/*Welcome Message */}
             <Text className = "text-white text-lg font-pmedium">
             Welocome to Aora</Text>
+            
             <Text className = "text-white text-3xl font-pbold">{User.username}</Text>
+            
 
           {/* Search Input Field */}
             <SearchInputField
             />
 
-          {/* Latest added videos to Aora (Horizantal Scroling) */}
+          {/* Latest added videos to Aora (Horizantal Scroling)  
             <View className = "mt-10 ml-3 space-y-2">
             <Trending posts = {latestVideos}/>
             </View>
-
+            */}
+            
        </View>
       }
      

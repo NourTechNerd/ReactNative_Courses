@@ -84,6 +84,7 @@ try {
 
     if (results.total === 0) throw new Error("No User Found");
     const CurrentUser = results.documents[0];
+    //console.log("length",CurrentUser);
     return CurrentUser;
     
 } catch (error) {
@@ -120,7 +121,7 @@ export async function GetLatestVideos()
         )
     
         if (videos.total === 0) throw new Error("No Videos Found");
-        console.log("videos found",videos);
+        //console.log("videos found",videos);
         return videos.documents;
     } catch (error) {
         console.log(error.message);
@@ -144,7 +145,39 @@ export async function searchVideos(query)
     }
 }
 
+export async function getVideosUser(userId)
+{
+    try {
+        const videos = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            [Query.equal('user',userId)]
+        )
 
+        if (videos.total === 0) throw new Error("No Videos Found");
+        console.log("videos found",videos);
+        return videos.documents;
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+   
+}
+
+
+
+export async function SignOut()
+{
+    try {
+        const session = await account.deleteSession('current');
+        if(!session) throw Error;
+        return session;
+        
+    } catch (error) {
+        
+        console.log(error.message);
+    }
+}
 
 
 
