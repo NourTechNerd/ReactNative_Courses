@@ -244,3 +244,139 @@ export async function createVideo(form)
     }
 }
 
+export async function SaveLike(videoId,userId)
+{
+    try {
+        // get the video data 
+        const video = await databases.getDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            videoId
+        )
+        
+        const updatedLikes = [...video.Likes, userId];
+
+        const result1 = await databases.updateDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            videoId,
+            {
+                Likes :updatedLikes
+            }
+        )
+
+        const Userdata = await databases.getDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.usersCollectionId,
+            userId
+        )
+        
+        const LikedVides = [...Userdata.LikedVideos,videoId];
+
+        const result2 = await databases.updateDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.usersCollectionId,
+            userId,
+            {
+                LikedVideos :LikedVides
+            }
+        )
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
+export async function RemoveLike(videoId,userId)
+{
+    try {
+        // get the video data 
+        const video = await databases.getDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            videoId
+        )
+        
+        const updatedLikes = [...video.Likes.filter(id => id !== userId)];
+
+        const result = await databases.updateDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            videoId,
+            {
+                Likes :updatedLikes
+            }
+        )
+
+        // get the user data 
+        const Userdata = await databases.getDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.usersCollectionId,
+            userId
+        )
+
+        const LikedVides = Userdata.LikedVideos.filter(id => id !== videoId);
+
+        const result2 = await databases.updateDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.usersCollectionId,
+            userId,
+            {
+                LikedVideos :LikedVides
+            }
+        )
+        
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+export async function isLiked(videoId,userId)
+{
+    try {
+        // get the video data 
+        const video = await databases.getDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            videoId
+        )
+        
+        const liked = video.Likes.includes(userId);
+        //console.log("liked appwrite",liked);
+        return liked;
+        
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
+export async function getLikedVideos(userId)
+{
+    try {
+        // get the user data 
+        const Userdata = await databases.getDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.usersCollectionId,
+            userId
+        )
+        
+        const likedVideos = Userdata.LikedVideos; // The video Ids
+        //console.log("liked appwrite",liked);
+        try {
+            const videos = await databases.listDocuments(
+                appwriteConfig.databaseId,
+                appwriteConfig.videosCollectionId,
+                [Query.equal("$id", likedVideos),Query.orderDesc('$createdAt')]
+            )
+        
+            if (videos.total === 0) throw new Error("No Videos Found");
+            //console.log("videos found",videos);
+            return videos.documents;
+        } catch (error) {
+            console.log(error.message);
+            
+        }
+    
+        
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}

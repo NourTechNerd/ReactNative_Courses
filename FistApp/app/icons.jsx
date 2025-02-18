@@ -1,4 +1,5 @@
 import bookmark from "../assets/icons/bookmark.png";
+import bookmark_golden from "../assets/icons/bookmark_golden.png";
 import home from "../assets/icons/home.png";
 import plus from "../assets/icons/plus.png";
 import profile from "../assets/icons/profile.png";
@@ -15,6 +16,7 @@ import play from "../assets/icons/play.png";
 export default {
   play,
   bookmark,
+  bookmark_golden,
   home,
   plus,
   profile,
