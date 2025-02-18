@@ -1,4 +1,4 @@
-import { Account,Client,ID,Avatars,Databases,Query } from 'react-native-appwrite';
+import { Account,Client,ID,Avatars,Databases,Query,Storage } from 'react-native-appwrite';
 
 export const appwriteConfig ={
     endpoint: "https://cloud.appwrite.io/v1",
@@ -7,7 +7,7 @@ export const appwriteConfig ={
     databaseId :"67a53ad7000d124a4d30",
     usersCollectionId : "67a53b98001d45938c11",
     videosCollectionId : "67a53bd300095afb8618",
-    storageId : "67a542460025a7440f03",
+    bucketId : "67a542460025a7440f03",
 }
 
 
@@ -23,6 +23,7 @@ client
 const account = new Account(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
+const storage = new Storage(client);
 
 export async function  CreateUser(username_,email_,password_)
 {
@@ -99,6 +100,7 @@ export async function GetVideos()
         const videos = await databases.listDocuments(
             appwriteConfig.databaseId,
             appwriteConfig.videosCollectionId,
+            [Query.orderDesc('$createdAt')]
         )
     
         if (videos.total === 0) throw new Error("No Videos Found");
@@ -151,11 +153,11 @@ export async function getVideosUser(userId)
         const videos = await databases.listDocuments(
             appwriteConfig.databaseId,
             appwriteConfig.videosCollectionId,
-            [Query.equal('user',userId)]
+            [Query.equal('user',userId),Query.orderDesc('$createdAt')]
         )
 
         if (videos.total === 0) throw new Error("No Videos Found");
-        console.log("videos found",videos);
+        //console.log("videos found",videos);
         return videos.documents;
         
     } catch (error) {
@@ -163,8 +165,6 @@ export async function getVideosUser(userId)
     }
    
 }
-
-
 
 export async function SignOut()
 {
@@ -180,4 +180,67 @@ export async function SignOut()
 }
 
 
+export async function uploadFile(file,type) // Push to appwrite Storage
+{
+    if(file)
+    {
+        const {mimeType,...rest} = file;
+        const asset = {type:mimeType,...rest};
+        try {
+            const uploadedFile = await storage.createFile(appwriteConfig.bucketId,ID.unique(),asset);
+            let fileUrl;
+            if (type === 'video')
+            {
+                fileUrl = storage.getFileView(appwriteConfig.bucketId,uploadedFile.$id);
+            }
+            else if (type === 'image')
+            {
+                fileUrl = storage.getFilePreview(appwriteConfig.bucketId,uploadedFile.$id,
+                    2000, // Resize width to 2000px
+                    2000, // Resize height to 2000px
+                    'top', //Crops the image from the top to center.
+                    100    // full Image quality in percents.
+                );
+            }
+            else 
+            {
+                throw new Error("Invalid File Type");
+            }
+            if (!fileUrl) throw new Error("No File Url Found");
+
+            return fileUrl;
+            
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+    return null;
+}
+
+export async function createVideo(form)
+{
+    try {
+        const [thumbnailUrl,videoUrl] = await Promise.all([
+            uploadFile(form.thumbnail,'image'),
+            uploadFile(form.video,'video'),
+        ]);
+
+        const newVideo = await databases.createDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.videosCollectionId,
+            ID.unique(),
+            {
+                title:form.title,
+                thumbnail:thumbnailUrl,
+                video:videoUrl,
+                prompt:form.prompt,
+                user:form.userId
+            }
+        )
+        return newVideo;
+        
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
 

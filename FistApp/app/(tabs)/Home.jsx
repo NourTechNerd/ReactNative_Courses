@@ -16,7 +16,7 @@ const Home = () => {
   const [latestVideos, setLatestVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
     
-  console.log("Usersdc",User);
+  //console.log("Usersdc",User);
   
 
   async function getVideos() {
@@ -78,11 +78,11 @@ const Home = () => {
             <SearchInputField
             />
 
-          {/* Latest added videos to Aora (Horizantal Scroling)  
+          {/* Latest added videos to Aora (Horizantal Scroling) */} 
             <View className = "mt-10 ml-3 space-y-2">
             <Trending posts = {latestVideos}/>
             </View>
-            */}
+            
             
        </View>
       }
