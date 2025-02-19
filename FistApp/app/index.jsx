@@ -25,11 +25,11 @@ export default function RoutLayout() {
           resizeMode='contain' />
           <Text className="text-white text-center text-2xl m-2 font-pregular">
             The Discover the AI artistics with
-            <Text className="text-secondary-200 font-pmedium"> Vidy</Text>
+            <Text className="text-secondary-100 font-pbold"> Vidy</Text>
           </Text>
           <Image
           source={Images.path}
-          className="w-[136px] h-[15px] absolute bottom-[200px] right-20"
+          className="w-[136px] h-[15px] absolute bottom-[240px] right-20"
           resizeMode='contain'
           >
           </Image>

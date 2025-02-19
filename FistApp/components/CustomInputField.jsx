@@ -24,7 +24,7 @@ export default function CustomInputField({placeholderText,isPassword,Value,SetVa
         isPassword &&
             <TouchableOpacity
             onPress={() => setShowPassword(!showPassword)}
-            className="absolute right-8 top-6"
+            className="absolute right-3 top-6"
             >
                 <Image
                 source = {showPassword ? icons.eyeHide : icons.eye}
