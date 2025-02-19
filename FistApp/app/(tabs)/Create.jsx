@@ -83,7 +83,7 @@ export default function Create() {
   return (
     <View className = "bg-primary h-full w-full">
       <ScrollView className = "p-4">
-        <Text className = "text-white text-xl font-psemibold">Add a Video to Aora</Text>
+        <Text className = "text-white text-xl font-psemibold">Add a Video to Vidy</Text>
 
         {/* Title */}
         <Text className = "text-sm text-gray-100 font-pmedium mt-3">Title of the video</Text>

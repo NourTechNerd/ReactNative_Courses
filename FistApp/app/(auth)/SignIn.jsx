@@ -47,7 +47,7 @@ export default function SignIn() {
         />
         <Text
         className = "text-white text-2xl font-pbold m-0"
-        >Log In to Aora</Text>
+        >Log In to Vidy</Text>
 
         <View className = "flex mt-5">
               <CustomInputField

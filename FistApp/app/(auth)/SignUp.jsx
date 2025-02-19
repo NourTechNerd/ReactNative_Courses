@@ -47,7 +47,7 @@ export default function SignUp() {
         />
         <Text
         className = "text-white text-2xl font-pbold m-0"
-        >Sign Up In to Aora</Text>
+        >Sign Up In to Vidy</Text>
 
         <View className = "flex mt-5">
             <CustomInputField

@@ -24,7 +24,7 @@ export default function RoutLayout() {
           resizeMode='contain' />
           <Text className="text-white text-center text-2xl m-2 font-pregular">
             The Discover the AI artistics with
-            <Text className="text-secondary-200 font-pmedium"> Aora</Text>
+            <Text className="text-secondary-200 font-pmedium"> Vidy</Text>
           </Text>
           <Image
           source={Images.path}

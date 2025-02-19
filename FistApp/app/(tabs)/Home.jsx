@@ -69,7 +69,7 @@ const Home = () => {
        <View className = "space-y-2 ml-3 mt-3">
           {/*Welcome Message */}
             <Text className = "text-white text-lg font-pmedium">
-            Welocome to Aora</Text>
+            Welocome to Vidy</Text>
             
             <Text className = "text-white text-3xl font-pbold">{User.username}</Text>
             
@@ -78,7 +78,7 @@ const Home = () => {
             <SearchInputField
             />
 
-          {/* Latest added videos to Aora (Horizantal Scroling) */} 
+          {/* Latest added videos to Vidy (Horizantal Scroling) */} 
             <View className = "mt-10 ml-3 space-y-2">
             <Trending posts = {latestVideos}/>
             </View>
