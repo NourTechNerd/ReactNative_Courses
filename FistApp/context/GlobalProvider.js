@@ -13,12 +13,19 @@ export function GlobalProvider({children}) {
     const [User,setUser] = useState(null);
     const [isLoading,setIsLoading] = useState(true);
     
+    console.log("IsLoggedIn",isLoggedIn);
+
     async function handleLogin() {
         try {
             const LoggedInUser = await GetCurrentUser();
             setUser(LoggedInUser);
-            setIsLoggedIn(true);
+            if(LoggedInUser)
+            {
+                 setIsLoggedIn(true);
 
+            }
+
+           
            // console.log("LoggedInUser",LoggedInUser);
            // console.log(isLoggedIn);
             

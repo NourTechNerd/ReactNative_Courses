@@ -7,8 +7,9 @@ import { useGlobaContext } from '../context/GlobalProvider'
 
 export default function RoutLayout() {
   const {isLoggedIn,isLoading} = useGlobaContext();
-  if (!isLoading && isLoggedIn) return <Redirect  href = "/Home" />;
-  
+
+  if (isLoggedIn) return <Redirect  href = "/Home" />;
+  console.log("sdcsdc",isLoggedIn)
   return (
     <View className="bg-primary h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}> 
