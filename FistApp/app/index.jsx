@@ -9,7 +9,7 @@ export default function RoutLayout() {
   const {isLoggedIn,isLoading} = useGlobaContext();
 
   if (isLoggedIn) return <Redirect  href = "/Home" />;
-  console.log("sdcsdc",isLoggedIn)
+
   return (
     <View className="bg-primary h-full">
       <ScrollView contentContainerStyle={{height: '100%'}}> 
@@ -20,7 +20,7 @@ export default function RoutLayout() {
           resizeMode='contain' />
 
           <Image 
-          className = "w-[380px] h-[380px]"
+          className = "w-[380px] h-[380px] bg-slate-100"
           source={Images.cards} 
           resizeMode='contain' />
           <Text className="text-white text-center text-2xl m-2 font-pregular">
