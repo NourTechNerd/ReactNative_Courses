@@ -15,12 +15,12 @@ export default function RoutLayout() {
       <ScrollView contentContainerStyle={{height: '100%'}}> 
         <View className="flex flex-col items-center h-full">
           <Image 
-          className = "w-28 h-28"
+          className = "w-28 h-28 mt-10"
           source = {Images.logo} 
           resizeMode='contain' />
 
           <Image 
-          className = "w-[380px] h-[380px] bg-slate-100"
+          className = "w-[380px] h-[300px]"
           source={Images.cards} 
           resizeMode='contain' />
           <Text className="text-white text-center text-2xl m-2 font-pregular">
